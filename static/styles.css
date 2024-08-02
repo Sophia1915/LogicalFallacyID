@@ -287,7 +287,7 @@ p {
 .center-form input[type="text"], 
 .center-form input[type="submit"] {
     width: 100%;
-    max-width: 300px; /* limit the width for visual appeal */
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
