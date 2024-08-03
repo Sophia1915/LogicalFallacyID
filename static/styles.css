@@ -279,7 +279,7 @@ p {
 }
 
 .center-form {
-    display: block; /* this resets it from the flex behavior */
+    display: block; 
     text-align: center;
 }
 
