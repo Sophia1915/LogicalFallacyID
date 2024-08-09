@@ -15,15 +15,15 @@ def normalize_answer(answer):
   return answer.strip().lower()
 
 
-@app.route('/homepage', methods=['GET'])
-def homepage():
-  return render_template('homepage.html')
+@app.route('/index', methods=['GET'])
+def index():
+  return render_template('index.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
     if request.method == 'POST':
         return game()
-    return redirect(url_for('homepage'))
+    return redirect(url_for('index'))
 
 @app.route('/learn')
 def learn():
@@ -60,7 +60,7 @@ def game():
         example = session.get('assistant_responses')[0]
         explanation = get_explanation(current_fallacy, example)
         session['was_multiple_choice'] = False
-        return render_template('index.html',
+        return render_template('game.html',
                                responses=session.get('assistant_responses'),
                                message=message,
                                explanation=explanation,
@@ -76,7 +76,7 @@ def game():
         message = f"Not quite! Let's try again:"
         options = generate_multiple_choice(session.get('current_fallacy'))
         session['was_multiple_choice'] = True
-        return render_template('index.html',
+        return render_template('game.html',
                                responses=session.get('assistant_responses'),
                                message=message,
                                options=options,
@@ -87,7 +87,7 @@ def game():
     session['current_fallacy'] = current_fallacy
     session['assistant_responses'] = assistant_responses
 
-  return render_template('index.html',
+  return render_template('game.html',
                          responses=assistant_responses,
                          message=message,
                          options=options,
@@ -101,7 +101,7 @@ def continue_game():
   session['current_fallacy'] = current_fallacy
   session['assistant_responses'] = assistant_responses
   session['was_multiple_choice'] = False
-  return render_template('index.html',
+  return render_template('game.html',
                          responses=assistant_responses,
                          message="",
                          fallacies=fallacies)
