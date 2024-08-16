@@ -1,4 +1,0 @@
-# LogicalFallacyGame
-# LogicalFallacyGame
-# LogicalFallacyGame
-# LogicalFallacyGame

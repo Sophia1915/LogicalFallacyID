@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, send_from_directory
 
 from LinkChatGPTNEW import generate_responses, fallacies, get_explanation
 from fuzzywuzzy import process
@@ -17,7 +17,8 @@ def normalize_answer(answer):
 
 @app.route('/index', methods=['GET'])
 def index():
-  return render_template('index.html')
+    # Serve index.html from the root directory
+    return send_from_directory('.', 'index.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
